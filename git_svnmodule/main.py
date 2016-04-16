@@ -87,12 +87,15 @@ def do_revsync(parser, args):
   target_modules = get_target_modules(parser, args, modules)
   print('svnmodule: revsync: loading svn revisisions ...')
   for module in target_modules:
-    if not os.path.isdir(module):
+    # Read the repository information.
+    try:
+      info = svn.get_info(module)
+    except svn.NotARepositoryException:
       print('svnmodule: revsync: warning: {!r} does not exist'.format(module))
-      continue
-    info = svn.get_info(module)
-    modules[module]['revision'] = info['revision']
-    print('svnmodule: revsync: {} = {}'.format(module, info['revision']))
+    else:
+      # Update the revision number.
+      modules[module]['revision'] = info['revision']
+      print('svnmodule: revsync: {} = {}'.format(module, info['revision']))
 
   write_svn_modules(modules)
 

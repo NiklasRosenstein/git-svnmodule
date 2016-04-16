@@ -26,6 +26,9 @@ class SvnException(Exception):
   pass
 
 
+class NotARepositoryException(SvnException):
+  pass
+
 
 class UrlMismatchException(SvnException):
 
@@ -52,7 +55,13 @@ def get_info(directory):
     'last changed date': '2016-04-16 12:48:02 +0200 (Sa, 16 Apr 2016)',
   }
   ```
+
+  :raise NotARepositoryException:
+  :raise SvnException:
   """
+
+  if not os.path.isdir(os.path.join(directory, '.svn')):
+    raise NotARepositoryException(directory)
 
   output = run(['svn', 'info'], cwd=directory, pipe=True).decode()
   result = {}
