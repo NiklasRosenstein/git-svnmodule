@@ -52,12 +52,6 @@ optional arguments:
   -h, --help            show this help message and exit
 ```
 
-__WHY?__
-
-This project was formed due to the need to manage large binary files for
-the Unik game project, as it was decided that Git was not appropriate for
-this task.
-
 __INSTALLATION__
   
 Via PyPI
