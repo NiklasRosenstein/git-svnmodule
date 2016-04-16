@@ -68,7 +68,6 @@ def do_update(parser, args):
     url = modules[module]['url']
     revision = modules[module].get('revision')
     print('svnmodule: update: {} = {}'.format(module, revision))
-    print('svnmodule: update:')
     svn.checkout(module, url, revision)
 
     # Update tracked revision number.
@@ -131,13 +130,13 @@ def get_parser():
 
   init = action.add_parser('init', help='install Git post-checkout hook')
 
-  add = action.add_parser('add', help='add a svn module to `.svnmodule`')
+  add = action.add_parser('add', help='add a svn module to `.svnmodules`')
   add.add_argument('url')
   add.add_argument('path', nargs='?')
 
   revsync = action.add_parser('revsync',
     help='synchronize the revision number of all or a specific svn '
-         'module and write them into `.svnmodule`')
+         'module and write them into `.svnmodules`')
   revsync.add_argument('module', nargs='?')
 
   update = action.add_parser('update',

@@ -23,7 +23,7 @@ import subprocess
 import sys
 
 
-class CalledProcessError(object):
+class CalledProcessError(Exception):
 
   def __init__(self, command, process, cwd):
     self.command = command
