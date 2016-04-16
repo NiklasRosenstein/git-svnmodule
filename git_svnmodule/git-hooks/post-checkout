@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "post-checkout: git svnmodule update"
+git svnmodule update

@@ -1,0 +1,7 @@
+*.py[cod]
+*.egg-info/
+
+# Testing environment
+.svnmodules
+Assets/
+
