@@ -26,7 +26,7 @@ if sys.version < '3.0':
 
 setuptools.setup(
   name = 'git-svnmodule',
-  version = '0.1.0',
+  version = '0.1.1-dev',
   description = 'use SVN repositories like Git submodules',
   author = 'Niklas Rosenstein',
   author_email = 'rosensteinniklas@gmail.com',

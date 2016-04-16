@@ -64,11 +64,18 @@ def do_update(parser, args):
   target_modules = get_target_modules(parser, args, modules)
 
   for module in target_modules:
-    print('svnmodule: update: {!r} ...'.format(module))
-    print('svnmodule: update:')
+    # Checkout.
     url = modules[module]['url']
     revision = modules[module].get('revision')
+    print('svnmodule: update: {} = {}'.format(module, revision))
+    print('svnmodule: update:')
     svn.checkout(module, url, revision)
+
+    # Update tracked revision number.
+    info = svn.get_info(module)
+    modules[module]['revision'] = info['revision']
+
+  write_svn_modules(modules)
 
 
 def do_revsync(parser, args):
