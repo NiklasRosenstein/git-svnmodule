@@ -18,7 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-__version__ = '0.1.1-dev'
+__version__ = '0.1.1'
 __author__ = 'Niklas Rosenstein <rosensteinniklas(at)gmail.com>'
 
 from .main import main
