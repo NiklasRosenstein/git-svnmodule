@@ -65,7 +65,7 @@ def read_svn_modules(file='.svnmodules'):
     if not section.startswith('svnmodule="') or not section.endswith('"'):
       raise ValueError('invalid section: {}'.format(section))
     path = normalize_path(section[11:-1])
-    values = dict(config.items(section))
+    values = collections.OrderedDict(config.items(section))
     if not path:
       raise ValueError('empty svnmodule path encountered')
     if path in result:
