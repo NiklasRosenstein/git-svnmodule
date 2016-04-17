@@ -39,16 +39,19 @@ adding a repository and checking out the most recent revision.
 __SYNOPSIS__
 
 ```
-usage: git svnmodule [-h] {init,add,revsync,update} ...
+usage: git svnmodule [-h] {init,add,revsync,update,format-authorized-keys} ...
 
 positional arguments:
-  {init,add,revsync,update}
+  {init,add,revsync,update,format-authorized-keys}
     init                install Git post-checkout hook
     add                 add a svn module to `.svnmodules`
     revsync             synchronize the revision number of all or a specific
                         svn module and write them into `.svnmodules`
     update              check out all or a specific svn module/s at the
                         revisions tracked by Git
+    format-authorized-keys
+                        format an OpenSSH authorized_keys file for SSH+SVN
+                        from a directory of public keys.
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -64,3 +67,9 @@ Get the latest development version (editable installation updatable with `git pu
 
     $ git clone https://github.com/NiklasRosenstein/git-svnmodule.git
     $ pip install -e git-svnmodule
+
+__CHANGELOG__
+
+v0.1.2
+
+* add `git svnmodule format-authorized-keys` command
