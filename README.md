@@ -1,6 +1,8 @@
 __NAME__
 
 `git svnmodule` - track svn repositories as modules in git
+[![PyPI Downloads](http://img.shields.io/pypi/dm/git-svnmodule.svg)](https://pypi.python.org/pypi/git-svnmodule)
+[![PyPI Version](https://img.shields.io/pypi/v/git-svnmodule.svg)](https://pypi.python.org/pypi/git-svnmodule)
 
 ![UML Diagram](http://i.imgur.com/Yio0UuO.png)
 
@@ -58,8 +60,7 @@ Via PyPI
 
     $ pip install git-svnmodule
 
-Recent development version:
+Get the latest development version (editable installation updatable with `git pull`)
 
     $ git clone https://github.com/NiklasRosenstein/git-svnmodule.git
-    $ cd git-svnmodule
-    $ pip install .
+    $ pip install -e git-svnmodule
