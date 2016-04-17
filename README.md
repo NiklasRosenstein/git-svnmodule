@@ -58,18 +58,25 @@ optional arguments:
 ```
 
 __INSTALLATION__
-  
-Via PyPI
 
-    $ pip install git-svnmodule
+1. Goto https://python.org/ and follow the instructions to install
+   Python 3 on your system (if it is not already installed)
+2. On Windows, make sure you don't install Python to a path that
+   contains whitespace! (see [pypa/pip#2783][]).
+2. Run `pip install --user git-svnmodule` from the command-line
+3. Run `python -c "import site; print(site.USER_BASE)"` and make sure
+   the printed path is on your `PATH` environment variable
+4. Use `git svnmodule`
 
-Get the latest development version (editable installation updatable with `git pull`)
-
-    $ git clone https://github.com/NiklasRosenstein/git-svnmodule.git
-    $ pip install -e git-svnmodule
+[pypa/pip#2783]: https://github.com/pypa/pip/issues/2783
 
 __CHANGELOG__
 
 v0.1.2
 
 * add `git svnmodule format-authorized-keys` command
+
+v0.1.1
+
+* #3 make sure .svnmodules section/option order remains consistent
+* #2 update command now updates revision numbers
