@@ -38,6 +38,7 @@ setuptools.setup(
       'git-svnmodule = git_svnmodule:main',
     ]
   },
+  keywords = 'git submodules svn',
   classifiers = [
     'Development Status :: 3 - Alpha',
     'Intended Audience :: Developers',
