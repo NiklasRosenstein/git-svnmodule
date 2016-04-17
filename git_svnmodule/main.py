@@ -23,6 +23,7 @@ from .config import normalize_path, read_svn_modules, write_svn_modules
 from . import svn
 
 import os
+import shlex
 import shutil
 import sys
 
@@ -99,6 +100,19 @@ def do_revsync(parser, args):
   write_svn_modules(modules)
 
 
+def do_format_authorized_keys(parser, args):
+  if not os.path.isdir(args.keys_directory):
+    parser.error('not a directory: {!r}'.format(args.keys_directory))
+  prefix = 'command="svnserve -t -r {root} --tunnel-user={{user}}", ' \
+           'no-port-forwarding,no-agent-forwarding,no-X11-forwarding,' \
+           'no-pty'.format(root=shlex.quote(args.root))
+  for file in os.listdir(args.keys_directory):
+    path = os.path.join(args.keys_directory, file)
+    with open(path) as fp:
+      for key in filter(bool, map(str.strip, fp.readlines())):
+        print(prefix.format(user=file), key)
+
+
 def get_target_modules(parser, args, modules):
   """
   Helper to get the list of modules that are targeted by the
@@ -143,6 +157,14 @@ def get_parser():
     help='check out all or a specific svn module/s at the revisions '
          'tracked by Git')
   update.add_argument('module', nargs='?')
+
+  format_authorized_keys = action.add_parser('format-authorized-keys',
+    help='format an OpenSSH authorized_keys file for SSH+SVN from a '
+         'directory of public keys.')
+  format_authorized_keys.add_argument('root',
+    help='SVN repository root directory')
+  format_authorized_keys.add_argument('keys_directory',
+    help='directory listing user public keys')
 
   return parser
 
