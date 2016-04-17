@@ -65,7 +65,8 @@ __INSTALLATION__
    contains whitespace! (see [pypa/pip#2783][]).
 2. Run `pip install --user git-svnmodule` from the command-line
 3. Run `python -c "import site; print(site.USER_BASE)"` and make sure
-   the printed path is on your `PATH` environment variable
+   the `bin` folder (Unix) or `Scripts` folder (Windows) inside the
+   printed directory is on your `PATH` environment variable
 4. Use `git svnmodule`
 
 [pypa/pip#2783]: https://github.com/pypa/pip/issues/2783
@@ -75,6 +76,7 @@ __CHANGELOG__
 v0.1.2
 
 * add `git svnmodule format-authorized-keys` command
+* #5 pip install: git-hooks data files not included
 
 v0.1.1
 
