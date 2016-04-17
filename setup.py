@@ -33,6 +33,9 @@ setuptools.setup(
   url = 'https://github.com/NiklasRosenstein/git-svnmodule',
 
   packages = ['git_svnmodule'],
+  package_data = {
+    'git_svnmodule': ['git-hooks/*'],
+  },
   entry_points = {
     'console_scripts': [
       'git-svnmodule = git_svnmodule:main',

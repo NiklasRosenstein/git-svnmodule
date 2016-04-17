@@ -27,7 +27,7 @@ import shlex
 import shutil
 import sys
 
-data_dir = os.path.dirname(__file__)
+here = os.path.dirname(__file__)
 
 
 ##
@@ -52,7 +52,7 @@ def do_add(parser, args):
 
 def do_init(parser, args):
   # Copy the Git hooks to the local Git repository.
-  hooks = os.path.join(data_dir, 'git-hooks')
+  hooks = os.path.join(here, 'git-hooks')
   for src in os.listdir(hooks):
     dst = os.path.join('.git', 'hooks', src)
     src = os.path.join(hooks, src)
